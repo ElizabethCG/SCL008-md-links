@@ -1,4 +1,25 @@
 {
   "name": "md-links",
-  "version": "0.1.0"
-}
+  "version": "0.1.0",
+  "description": "Extrae links de archivos con formato markdown",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage",
+    "eslint": "eslint ext . js SCL008-md-links/ src/ test/",
+    "pretest": "npm run eslint"
+  },
+  "jest": {
+    "verbose": true,
+    "collectCoverage": true
+  },
+  "author": "Elizabeth Cáceres",
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^5.16.0",
+    "eslint-plugin-jest": "^22.5.0",
+    "jest": "^24.7.1",
+    "markdown-link-extractor": "^1.2.0",
+    "save": "^2.3.3",
+
+
+  }
