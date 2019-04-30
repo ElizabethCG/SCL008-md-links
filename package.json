@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage",
-    "eslint": "eslint ext . js SCL008-md-links/ src/ test/",
+    "eslint": "eslint --ext .js test/",
     "pretest": "npm run eslint"
   },
   "jest": {
@@ -19,7 +19,8 @@
     "eslint-plugin-jest": "^22.5.0",
     "jest": "^24.7.1",
     "markdown-link-extractor": "^1.2.0",
-    "save": "^2.3.3",
+    "save": "^2.3.3"
 
 
   }
+}

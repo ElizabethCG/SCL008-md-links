@@ -8,29 +8,23 @@ let markdownLinkExtractor = require('markdown-link-extractor');
 
 ///Código perteneciente al módulo "markdown-link-extractor", pero edidtado para desplegar 3 parámetros/
 let marked = require('marked');
-
 function markdownLinkExtractorb(markdown,pathToSearch) {
     var links = [];
-
     var renderer = new marked.Renderer();
-
     // Taken from https://github.com/markedjs/marked/issues/1279
     var linkWithImageSizeSupport = /^!?\[((?:\[[^\[\]]*\]|\\[\[\]]?|`[^`]*`|[^\[\]\\])*?)\]\(\s*(<(?:\\[<>]?|[^\s<>\\])*>|(?:\\[()]?|\([^\s\x00-\x1f()\\]*\)|[^\s\x00-\x1f()\\])*?(?:\s+=(?:[\w%]+)?x(?:[\w%]+)?)?)(?:\s+("(?:\\"?|[^"\\])*"|'(?:\\'?|[^'\\])*'|\((?:\\\)?|[^)\\])*\)))?\s*\)/;
-
     marked.InlineLexer.rules.normal.link = linkWithImageSizeSupport;
     marked.InlineLexer.rules.gfm.link = linkWithImageSizeSupport;
     marked.InlineLexer.rules.breaks.link = linkWithImageSizeSupport;
-
     renderer.link = function (href, title, text) {
         links.push({href:href,text:text,path:pathToSearch});
     };
     renderer.image = function (href, title, text) {
         // Remove image size at the end, e.g. ' =20%x50'
         href = href.replace(/ =\d*%?x\d*%?$/, "");
-        links.push(href,text,pathToSearch);
+        links.push({href:href,text:text,path:pathToSearch});
     };
     marked(markdown, { renderer: renderer });
-
     return links;
 };
 ///Fin código perteneciente al módulo "markdown-link-extractor", pero edidtado para desplegar 3 parámetros/
@@ -57,7 +51,6 @@ function mdLinks(filePath, evalOption) {
 
 
   const principal = (filePath, evalOption, links) => {
-
     return new Promise((resolve, reject) => {
 
 
@@ -118,3 +111,5 @@ function mdLinks(filePath, evalOption) {
     });
 
 }
+
+module.exports = mdLinks;
