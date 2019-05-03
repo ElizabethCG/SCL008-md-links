@@ -1,9 +1,4 @@
 const mdLinks1 = require('../index.js');
-// const readme = require('../readme1.md');
-
- // import { mdLinks} from '../index.js';
-
-
 
 
 describe('Funcion mdLinks',() =>{
